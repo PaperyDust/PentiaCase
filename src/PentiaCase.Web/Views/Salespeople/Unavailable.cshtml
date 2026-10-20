@@ -1,0 +1,9 @@
+@{
+    ViewData["Title"] = "Salespeople unavailable";
+}
+
+<h1>Salespeople unavailable</h1>
+<p class="alert alert-warning" role="alert">The salesperson or order data could not be loaded or failed validation. No partial results are displayed.</p>
+<p>Please try again later. If the problem continues, contact support; diagnostic details are recorded in the application logs.</p>
+<a href="@Context.Request.Path" class="btn btn-primary">Try again</a>
+<a asp-controller="Salespeople" asp-action="Index">Back to salespeople</a>

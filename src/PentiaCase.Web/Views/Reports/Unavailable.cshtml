@@ -1,0 +1,8 @@
+@{
+    ViewData["Title"] = "Monthly orders unavailable";
+}
+
+<h1>Monthly orders unavailable</h1>
+<p class="alert alert-warning" role="alert">The order data could not be loaded or failed validation. No report is displayed because its totals could be unreliable.</p>
+<p>Please try again later. If the problem continues, contact support; diagnostic details are recorded in the application logs.</p>
+<a asp-controller="Reports" asp-action="MonthlyOrders">Try again</a>

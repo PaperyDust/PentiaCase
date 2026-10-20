@@ -1,0 +1,37 @@
+@model SalespeopleIndexViewModel
+@{
+    ViewData["Title"] = "Salespeople";
+}
+
+<h1>Salespeople</h1>
+@if (Model.Salespeople.Count == 0)
+{
+    <p role="status">No salespeople were found.</p>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table">
+            <caption>All salespeople and their order counts</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">City</th>
+                    <th scope="col" class="text-end">Orders</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Salespeople)
+                {
+                    <tr>
+                        <th scope="row">
+                            <a asp-controller="Salespeople" asp-action="Details" asp-route-id="@item.Salesperson.Id">@item.Salesperson.Name</a>
+                        </th>
+                        <td>@item.Salesperson.City</td>
+                        <td class="text-end">@item.OrderCount</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

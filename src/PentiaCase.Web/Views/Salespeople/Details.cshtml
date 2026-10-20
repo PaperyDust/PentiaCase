@@ -1,0 +1,54 @@
+@using System.Globalization
+@model SalespersonDetailsViewModel
+@{
+    ViewData["Title"] = Model.Salesperson.Name;
+}
+
+<h1>@Model.Salesperson.Name</h1>
+<dl class="row">
+    <dt class="col-sm-3">Salesperson ID</dt>
+    <dd class="col-sm-9">@Model.Salesperson.Id</dd>
+    <dt class="col-sm-3">Hire date</dt>
+    <dd class="col-sm-9">@Model.Salesperson.HireDate.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture)</dd>
+    <dt class="col-sm-3">Address</dt>
+    <dd class="col-sm-9">@Model.Salesperson.Address</dd>
+    <dt class="col-sm-3">Postal code</dt>
+    <dd class="col-sm-9">@Model.Salesperson.ZipCode</dd>
+    <dt class="col-sm-3">City</dt>
+    <dd class="col-sm-9">@Model.Salesperson.City</dd>
+</dl>
+
+<h2>Orders (@Model.Orders.Count)</h2>
+@if (Model.Orders.Count == 0)
+{
+    <p role="status">This salesperson has no orders.</p>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table">
+            <caption>Orders created by @Model.Salesperson.Name, newest first</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col" class="text-end">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.Orders)
+                {
+                    <tr>
+                        <th scope="row">@order.Id</th>
+                        <td>@order.OrderName</td>
+                        <td>@order.OrderDate.ToString("dd-MM-yyyy HH:mm", CultureInfo.InvariantCulture)</td>
+                        <td class="text-end">@order.OrderPrice.ToString("N0", CultureInfo.InvariantCulture)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+<a asp-controller="Salespeople" asp-action="Index">Back to salespeople</a>

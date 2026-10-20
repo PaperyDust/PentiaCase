@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Wingineers sales";
+}
+
+<h1>Wingineers sales</h1>
+<p>Salespeople and monthly order reporting for the Pentia case: Measure it all.</p>
+<p>Pages share the cached data until you select Refresh data in the header or restart the application. The fetch time is shown next to the button. Refreshing reloads the current page after the new data is ready.</p>
+<p>Browse salespeople and their order histories, or view monthly order counts including months without orders between the earliest and latest order.</p>
+<ul>
+    <li><a asp-controller="Salespeople" asp-action="Index">Salespeople and order counts</a></li>
+    <li><a asp-controller="Reports" asp-action="MonthlyOrders">Monthly order volume</a></li>
+</ul>

@@ -1,0 +1,47 @@
+@using System.Globalization
+@model MonthlyOrdersViewModel
+@{
+    ViewData["Title"] = "Monthly order volume";
+}
+
+<h1>Monthly order volume</h1>
+@if (Model.Months.Count == 0)
+{
+    <p role="status">No orders are available for the monthly report.</p>
+}
+else
+{
+    <p>
+        Report period: @Model.Months[0].Month.ToString("MMMM yyyy", CultureInfo.InvariantCulture)
+        through @Model.Months[Model.Months.Count - 1].Month.ToString("MMMM yyyy", CultureInfo.InvariantCulture).
+        Months without orders are included.
+    </p>
+    <div class="table-responsive">
+        <table class="table">
+            <caption>Number of orders per calendar month, oldest first</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Month</th>
+                    <th scope="col" class="text-end">Orders</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var month in Model.Months)
+                {
+                    <tr>
+                        <td>@month.Month.Year</td>
+                        <th scope="row">@month.Month.ToString("MMMM", CultureInfo.InvariantCulture)</th>
+                        <td class="text-end">@month.OrderCount</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="row" colspan="2">Total orders</th>
+                    <td class="text-end">@Model.TotalOrders</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+}

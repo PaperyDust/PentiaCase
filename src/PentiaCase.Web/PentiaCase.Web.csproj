@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>PentiaCase-Web-3809c6a1-550b-4cf5-bdeb-6b00473c45be</UserSecretsId>
+  </PropertyGroup>
+
+</Project>
